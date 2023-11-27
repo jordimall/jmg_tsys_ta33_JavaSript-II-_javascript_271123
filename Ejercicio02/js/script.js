@@ -41,3 +41,24 @@ console.log(
         textOriginal,
     )}`,
 );
+
+const invertirNombre = nombre => {
+    let regex = /(\w+)\s+(\w+)/;
+    return nombre.replace(regex, "$2, $1");
+};
+
+let nombre = "John Smith";
+let nombreInvertido = invertirNombre(nombre);
+
+console.log(nombreInvertido);
+
+const eliminarEtiquetasPeligrosas = html => {
+    let regex = /<(script|style)[^>]*>[\s\S]*?<\/\1>/gi;
+    return html.replace(regex, "");
+};
+
+let html =
+    '<html><body><h1>Hola, mundo!</h1><script>alert("peligro");</script></body></html>';
+let htmlSeguro = eliminarEtiquetasPeligrosas(html);
+
+console.log(htmlSeguro);
